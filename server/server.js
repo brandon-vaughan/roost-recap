@@ -22,11 +22,11 @@ var app = express( express.bodyParser() );
 // Server.listen(port): Instantiate node server with app framework
 var server = require( 'http' ).createServer( app );
 
-// Socket.io: Real time node module for events 
-var io = require( 'socket.io' ).listen( server );
-
 // Set server port
 server.listen( config.port );
+
+// Socket.io: Real time node module for events 
+var io = require( 'socket.io' ).listen( server );
 
 /*====================================================
 =            Node Server Constructor            =
@@ -36,14 +36,21 @@ module.exports = function() {
   /*==========  Create Socket.io Connection  ==========*/
   io.sockets.on('connection', function( socket ) {
 
-  });  
+    /*==========  Text Events  ==========*/
+    var textEvents = require( './text-events.js' );
+    socket.on('text:change', function(data) { textEvents.update(io, data) });
+
+  });
 
   /*==========  Create App Routes  ==========*/
 
   // Unit Testing
   app.use( '/_test', express.static( config.baseDir + 'test') );
+  app.use( '/_build', express.static( config.baseDir + 'build') );
+  app.use( '/_vendors', express.static( config.baseDir + 'build/vendors') );
 
   // Running Server Message
   console.log( 'Serving on ' + config.baseUrl + ':' + config.port );
 
 };
+

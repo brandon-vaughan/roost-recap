@@ -1,0 +1,73 @@
+
+@import "compass/css3";
+
+/**
+ * Base styles for slider. Please extend class for each slider.
+ */
+
+
+%sliderr {
+
+  overflow: hidden;
+  position: relative;
+
+  /* wrapper for slides */
+  .deck {
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* each individual slide */
+  .slide {    
+    float: left;
+    height: 100%;
+    position: relative;    
+    width: 100%;
+    z-index: 1000;
+  }
+
+
+  /**
+   * Slider Transitions
+   */
+
+  /* slide left-right */
+  &.trans-slide .slide {
+    margin-right: -100%;
+    right: 0;
+
+    @include transition(right 3s, visibility 3s);
+
+    &.is-transition.future {
+      right: -100%;
+    }
+
+    &.is-transition.past {
+      right: 100%;
+    }
+
+    &.is-transition.past,
+    &.is-transition.future {
+      visibility: hidden;
+    }
+
+  } /* end trans-slide */
+
+  /* slide fade */
+  &.trans-fade .slide {
+    opacity: 1;
+    position: absolute;
+
+    @include transition(opacity 1s);
+
+    &.is-transition.past,
+    &.is-transition.future {
+      opacity: 0;
+      left: 0;
+      top: 0;
+      z-index: 100;
+    }
+
+  } /* end trans-fade */
+
+}
