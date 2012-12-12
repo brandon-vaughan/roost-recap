@@ -73,9 +73,7 @@ define([
     // get id of instance
     this.id = this.elem.attr('id');
 
-    console.log(this.id);
-
-    // Instanciate CodeMirror
+    // Instantiate CodeMirror
     this.editor = CM.fromTextArea( this.elem[0], this.options.editor );
 
     if ( this.options.livePreview ) {
@@ -104,6 +102,7 @@ define([
    */
   EditorBlock.prototype.bindings = function() {
 
+    // Catch instance for use in scope
     var instance = this;
 
     // When editor is changed send event to server
@@ -111,7 +110,7 @@ define([
       instance.onChange();
     });
 
-    // 
+    // Listen for editor updates 
     socket.on("editor:update", function(data) {
 
       if ( data.id === instance.id ) {
@@ -119,7 +118,6 @@ define([
         if ( data.value !== instance.editor.getValue() ) {
           instance.updateEditor(data.value);
         }
-          
 
         if ( instance.options.livePreview )
           instance.updatePreview(data.value);
@@ -131,8 +129,8 @@ define([
 
 
   /**
-   * onChange: on text change
-   * @return {[type]} [description]
+   * onChange: emit editor:change event
+   * @return { obj } [instance id, current editor value]
    */
   EditorBlock.prototype.onChange = function() {
     var changeData = {
@@ -145,6 +143,10 @@ define([
   };
 
 
+  /**
+   * updateEditor: Update the editor with new value
+   * @param  { string } newValue [ full string replace for editor ]
+   */
   EditorBlock.prototype.updateEditor = function( newValue ) {
 
     this.editor.setValue( newValue );
@@ -172,15 +174,21 @@ define([
    * lineHighlight: Add activeline class to current line
    */
   EditorBlock.prototype.lineHighlight = function() {
+
     var editor = this.editor;
     var hlLine = editor.addLineClass(0, "background", "activeline");
+
     this.editor.on("cursorActivity", function() {
+
       var cur = editor.getLineHandle(editor.getCursor().line);
+
       if (cur != hlLine) {
         editor.removeLineClass(hlLine, "background", "activeline");
         hlLine = editor.addLineClass(cur, "background", "activeline");
       }
+
     });
+
   };
 
   return EditorBlock;
