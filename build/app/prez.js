@@ -1,4 +1,4 @@
-define(['jquery'], function( $ ) {
+define(['jquery', 'socket'], function( $, socket ) {
 
 
   // -------------------------- Slider -------------------------- //
@@ -76,25 +76,38 @@ define(['jquery'], function( $ ) {
   Prez.prototype.bindings = function() {
 
     var instance = this;
+    var socketInstance = socket;
 
     $(document).keyup(function(e){
 
       // Move Slide
-      if ( e.keyCode === 39 || e.keyCode === 37 ) {
+      if ( e.altKey && ( e.keyCode === 39 || e.keyCode === 37 ) ) {
 
         var direction = e.keyCode === 39 ? 'next' : 'prev';
         instance.move(direction);
+        socketInstance.emit('prez:changeslide', { direction: direction } );
 
       }
 
       // Move Props
       if ( e.altKey && ( e.keyCode === 38 || e.keyCode === 40 ) ) {
 
-        var frame = e.keyCode === 40 ? 'next' : 'prev';
-        instance.moveProps(frame);
+        var direction = e.keyCode === 40 ? 'next' : 'prev';
+        instance.moveFrames(direction);
+        socketInstance.emit('prez:changeframe', { direction: direction } );
 
       }
 
+    });
+
+    socket.on('prez:updateslide', function(data) {
+      console.log('updatingslide...');
+      instance.move(data.direction);
+    });
+
+    socket.on('prez:updateframe', function(data) {
+      console.log('updatingframe...');
+      instance.moveFrames(data.direction);
     });
 
   };
@@ -137,7 +150,7 @@ define(['jquery'], function( $ ) {
 
   };
 
-  Prez.prototype.moveProps = function(direction) {
+  Prez.prototype.moveFrames = function(direction) {
 
     this.curpropClass = this.propsIndex[this.onStage];
 

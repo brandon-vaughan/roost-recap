@@ -106,9 +106,25 @@ define([
 
     var instance = this;
 
+    // When editor is changed send event to server
     this.editor.on("change", function() {
       instance.onChange();
-      instance.updatePreview();
+    });
+
+    // 
+    socket.on("editor:update", function(data) {
+
+      if ( data.id === instance.id ) {
+
+        if ( data.value !== instance.editor.getValue() ) {
+          instance.updateEditor(data.value);
+        }
+          
+
+        if ( instance.options.livePreview )
+          instance.updatePreview(data.value);
+      }
+
     });
 
   };
@@ -119,22 +135,35 @@ define([
    * @return {[type]} [description]
    */
   EditorBlock.prototype.onChange = function() {
-    console.log('on change...');
+    var changeData = {
+      id: this.id,
+      value: this.editor.getValue()
+    };
+
+    socket.emit('editor:change', changeData);
+
   };
+
+
+  EditorBlock.prototype.updateEditor = function( newValue ) {
+
+    this.editor.setValue( newValue );
+
+  }
 
 
   /**
    * updatePreview: updates priview iframe with changed value
    * @trigger when editorblock is changed
    */
-  EditorBlock.prototype.updatePreview = function() {
+  EditorBlock.prototype.updatePreview = function( newValue ) {
 
     // get new editor value
-    var newValue = this.editor.getValue();
-    
+    var editorValue = newValue ? newValue : this.editor.getValue();
+
     // write newValue to iframe
     this.preview.open();
-    this.preview.write( newValue );
+    this.preview.write( editorValue );
     this.preview.close();
 
   };

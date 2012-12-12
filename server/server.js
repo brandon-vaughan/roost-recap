@@ -38,7 +38,27 @@ module.exports = function() {
 
     /*==========  Editor Events  ==========*/
     var editorEvents = require( './editor-events.js' );
-    socket.on('text:change', function(data) { textEvents.update(io, data) });
+    var editor = new editorEvents();
+
+    socket.on('editor:change', function(data) {
+      console.log('received editorchange...');
+      editor.update(io, data);
+    
+    });
+
+    /*==========  Prez Events  ==========*/
+    var prezEvents = require( './prez-events.js' );
+    var prez = new prezEvents();
+
+    socket.on('prez:changeslide', function(data) {
+      console.log('received changeslide...');
+      prez.updateSlide(socket, data);
+    });
+
+    socket.on('prez:changeframe', function(data) {
+      console.log('received changeframe...');
+      prez.updateFrame(socket, data);
+    });
 
   });
 

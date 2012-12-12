@@ -11,7 +11,7 @@ require.config({
     codemirror: '../vendors/codemirror',
     text: 'text',
     prism: 'prism',
-    socketio: 'http://liveprez:8000/socket.io/socket.io.js'
+    socketio: 'http://liveprez:8000/socket.io/socket.io'
   },
   shim: {
     'socketio': {
