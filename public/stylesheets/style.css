@@ -1398,55 +1398,53 @@ p {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\000033}}
 .scene .frame {
-  display: none;
   opacity: 0;
-  -webkit-transition: opacity 1s;
-  -moz-transition: opacity 1s;
-  -o-transition: opacity 1s;
-  transition: opacity 1s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  -webkit-transition-delay: 1s;
+  -moz-transition-delay: 1s;
+  -o-transition-delay: 1s;
+  transition-delay: 1s;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
 .scene.one [data-frame=one] {
-  display: block;
   opacity: 1;
-  -webkit-transition-delay: 1s;
-  -moz-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  transition-delay: 1s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
 .scene.two [data-frame=two] {
-  display: block;
   opacity: 1;
-  -webkit-transition-delay: 1s;
-  -moz-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  transition-delay: 1s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
 .scene.three [data-frame=three] {
-  display: block;
   opacity: 1;
-  -webkit-transition-delay: 1s;
-  -moz-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  transition-delay: 1s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
 .scene.four [data-frame=four] {
-  display: block;
   opacity: 1;
-  -webkit-transition-delay: 1s;
-  -moz-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  transition-delay: 1s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
 .scene.five [data-frame=five] {
-  display: block;
   opacity: 1;
-  -webkit-transition-delay: 1s;
-  -moz-transition-delay: 1s;
-  -o-transition-delay: 1s;
-  transition-delay: 1s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }

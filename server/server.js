@@ -36,8 +36,8 @@ module.exports = function() {
   /*==========  Create Socket.io Connection  ==========*/
   io.sockets.on('connection', function( socket ) {
 
-    /*==========  Text Events  ==========*/
-    var textEvents = require( './text-events.js' );
+    /*==========  Editor Events  ==========*/
+    var editorEvents = require( './editor-events.js' );
     socket.on('text:change', function(data) { textEvents.update(io, data) });
 
   });

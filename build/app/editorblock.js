@@ -1,4 +1,5 @@
 define([
+  'socket',
   'jquery',
   'codemirror',
   '../vendors/mode/shell',
@@ -6,7 +7,7 @@ define([
   '../vendors/mode/css',
   '../vendors/mode/javascript',
   '../vendors/mode/htmlmixed'
-], function( $, CM ) {
+], function( socket, $, CM ) {
 
   var EditorBlock = function( elem, options, editorOptions ) {
 
@@ -59,8 +60,7 @@ define([
       tabMode: 'indent',
       theme: 'prism',
       lineNumbers: true,
-      lineHighlight: true,
-      autofocus: true
+      lineHighlight: true
     }
   };
 
