@@ -1,0 +1,22 @@
+#deck {
+  background-color: #f5f2f0;
+  /*background-image: url(../images/shadow.png);*/
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  @include trans(background-color 1s);
+
+  &.two {
+    background: #222;
+  }
+  &.three {
+    background: #263942;
+  }
+  &.four {
+    background: #19252C;
+  }
+
+}

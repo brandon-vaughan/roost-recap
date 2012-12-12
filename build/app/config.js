@@ -2,15 +2,16 @@ require.config({
   deps: [
     window.location.pathname === '/_test/runner/' ? 'test/config' : 'app'
   ],
+  urlArgs: 'bust='+new Date().getTime(),
+  baseURL: '/vendors',
   paths: {
-    baseURL: 'http://liveprez:8000/',
-    underscore: '../vendors/underscore',
-    backbone: '../vendors/backbone',
+    underscore: 'underscore',
+    backbone: 'backbone',
     jquery: '../vendors/jquery',
-    text: '../vendors/text',
-    prism: '../vendors/prism',
-    test: '/_test',
-    socketio: 'socket.io/socket.io'
+    codemirror: '../vendors/codemirror',
+    text: 'text',
+    prism: 'prism',
+    socketio: 'http://liveprez:8000/socket.io/socket.io'
   },
   shim: {
     'socketio': {

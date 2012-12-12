@@ -13,9 +13,6 @@
   <div id="prez">
      <section id="deck" class="one">
         <?php include_once('slides/one.php'); ?>
-        <?php include_once('slides/two.php'); ?>
-        <?php include_once('slides/three.php'); ?>
-        <?php include_once('slides/four.php'); ?>
       </section>
   </div>
 

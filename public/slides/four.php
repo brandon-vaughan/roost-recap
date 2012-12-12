@@ -1,4 +1,4 @@
-<article id="four" class="on-display">
+<article id="four">
 
   <div class="backdrop">
     <!-- Trees -->
