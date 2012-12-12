@@ -2,7 +2,7 @@ require.config({
   deps: [
     window.location.pathname === '/_test/runner/' ? 'test/config' : 'app'
   ],
-  urlArgs: 'bust=@Revision@',
+  urlArgs: 'bust='+new Date().getTime(),
   baseURL: '/vendors',
   paths: {
     underscore: 'underscore',

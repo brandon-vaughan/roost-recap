@@ -9,9 +9,9 @@ textarea.code { visibility: hidden }
 .cm-s-prism .cm-keyword { color: #07a; }
 .cm-s-prism .cm-atom { color: #CF7EA9; }
 .cm-s-prism .cm-number { color: #07a; }
-.cm-s-prism .cm-def { color: #aac6e3; }
+.cm-s-prism .cm-def { color: slateGrey; }
 .cm-s-prism .cm-variable { color: #333; }
-.cm-s-prism .cm-variable-2 { color: #eed1b3; }
+.cm-s-prism .cm-variable-2 { color: #905; }
 .cm-s-prism .cm-variable-3 { color: #faded3; }
 .cm-s-prism .cm-property { color: #690; }
 .cm-s-prism .cm-operator {color: #fa8d6a;}
@@ -35,10 +35,10 @@ textarea.code { visibility: hidden }
 .cm-s-prism .CodeMirror-nonmatchingbracket { color: #f22; }
 
 .cm-s-prism .CodeMirror-selected {
-  background: rgba(255, 255, 255, 0.15);
+  background: lighten(#FFFDD5, 3%);
 }
 .cm-s-prism .CodeMirror-focused .CodeMirror-selected {
-  background: rgba(255, 255, 255, 0.10);
+  background: lighten(#FFFDD5, 3%);
 }
 
 /* Editor styling */

@@ -1,0 +1,22 @@
+.scene {
+
+  .frame {
+    display: none;
+    opacity: 0;
+    @include transition(opacity 1s);
+  }
+
+  $frames: one, two, three, four, five;
+
+  @each $frame in $frames {
+   
+    &.#{$frame} [data-frame=#{$frame}] {
+      display: block;
+      opacity: 1;
+      @include transition-delay(1s);
+    }
+
+  }
+
+
+}

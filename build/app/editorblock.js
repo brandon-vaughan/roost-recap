@@ -1,13 +1,14 @@
 define([
   'jquery',
   'codemirror',
+  '../vendors/mode/shell',
   '../vendors/mode/xml',
   '../vendors/mode/css',
   '../vendors/mode/javascript',
   '../vendors/mode/htmlmixed'
 ], function( $, CM ) {
 
-  var EditorBlock = function( elem, options ) {
+  var EditorBlock = function( elem, options, editorOptions ) {
 
     if ( !elem ) {
       return;
@@ -27,6 +28,19 @@ define([
     // get user options
     for( prop in options ) {
       this.options[prop] = options[prop];
+    }
+
+    // Define Editor Options
+    this.options.editor = {};
+
+    // setup defaults
+    for( var prop in EditorBlock.defaults.editor ) {
+      this.options.editor[prop] = EditorBlock.defaults.editor[prop];
+    }
+
+    // get user options
+    for( prop in editorOptions ) {
+      this.options.editor[prop] = editorOptions[prop];
     }
 
     this.setup();
@@ -57,7 +71,9 @@ define([
   EditorBlock.prototype.setup = function() {
 
     // get id of instance
-    this.id = this.elem.data('code');
+    this.id = this.elem.attr('id');
+
+    console.log(this.id);
 
     // Instanciate CodeMirror
     this.editor = CM.fromTextArea( this.elem[0], this.options.editor );

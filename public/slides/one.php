@@ -12,7 +12,7 @@
     
     <div class="frame preview" data-frame="one">
 
-      <textarea class="code" data-code="html" name="code">
+      <textarea class="code" id="code-html" name="html">
 <!doctype html>
 <html>
   <head>
@@ -36,8 +36,27 @@
   </body>
 </html></textarea>
     
-      <iframe id="html-preview"></iframe>
+      <iframe id="code-html-preview"></iframe>
     
+    </div>
+
+    <div class="frame" data-frame="two">
+
+      <textarea class="code" id="code-javascript" name="javascript">
+Sliderr.prototype.assignments = function() {
+
+  // Send current out
+  this.curSlide.addClass(this.moveOutClass).removeClass('cur');
+
+  // Move to selected
+  this.nextSlide.removeClass('future').removeClass('past').addClass('cur');
+
+  // Setup past and future directions
+  this.pastSlide.removeClass('future').addClass('past');
+  this.futureSlide.removeClass('past').addClass('future');
+
+};</textarea>
+
     </div>
 
   </div>

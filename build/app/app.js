@@ -19,8 +19,11 @@ require([
   =            Editor Blocks            =
   =====================================*/
   
-  var $htmlCode = $('textarea').data('code', 'html');
+  var $htmlCode = $('#code-html');
   var htmlEditor = new EditorBlock( $htmlCode, { livePreview: true } );
+
+  var $javascriptCode = $('#code-javascript');
+  var javascriptEditor = new EditorBlock( $javascriptCode, {},{ mode: 'javascript' } );
   
   
   /*-----  End of Editor Blocks  ------*/

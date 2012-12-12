@@ -60,7 +60,7 @@ define(['jquery'], function( $ ) {
 
   Prez.prototype.setup = function() {
 
-
+    this.$onDisplay = $('#one');
     this.onDisplay = 0;
     this.onStage = 0;
 
@@ -77,7 +77,7 @@ define(['jquery'], function( $ ) {
 
     var instance = this;
 
-    $(document).keydown(function(e){
+    $(document).keyup(function(e){
 
       // Move Slide
       if ( e.keyCode === 39 || e.keyCode === 37 ) {
@@ -88,7 +88,7 @@ define(['jquery'], function( $ ) {
       }
 
       // Move Props
-      if ( e.keyCode === 38 || e.keyCode === 40 ) {
+      if ( e.altKey && ( e.keyCode === 38 || e.keyCode === 40 ) ) {
 
         var frame = e.keyCode === 40 ? 'next' : 'prev';
         instance.moveProps(frame);
