@@ -1,4 +1,4 @@
-<article id="three">
+<article id="three" class="on-display">
 
   <div class="backdrop">
 
@@ -13,6 +13,8 @@
   </div>
 
   <div class="scene">
+
+<div class="frame">
 <pre class="language-css">
 <code class="language-css">
 .is-transition {
@@ -37,8 +39,10 @@
   }
 </code>
 </pre>
-<pre class="language-javascript">
-<code class="language-javascript">
+</div>
+<div class="frame">
+  <iframe id="preview"></iframe>
+<textarea id="code" name="code">
 function Slider( elem, options ) {
   // get movement type ( transition or callback )
   this.movement = isTransition ? 'transition' : 'animate';
@@ -61,9 +65,8 @@ Slider.prototype.animate = function() {
   this.pastSlide.animate(this[this.effect].past, this.duration );
   this.futureSlide.animate(this[this.effect].future, this.duration );
 };
-</code>
-</pre>
-
+</textarea>
+</div>
   </div>
 
 </article>

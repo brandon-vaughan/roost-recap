@@ -1,0 +1,27 @@
+h1 {
+  color: rgba(0,0,0,.5);
+  font-family: 'Amatic SC', cursive;
+  font-size: 3.5em;
+  font-weight: 700;
+  line-height: 1.5em;
+  margin: 0;
+  text-shadow: 0 1px 0 rgba(255,255,255,.3);
+
+  span {
+    display: block;
+    font-size: .5em;
+    letter-spacing: 2px;
+    line-height: .5em;
+  }
+
+}
+
+p {
+  color: rgba(0,0,0,.5);
+  font-family: 'Eagle-Light', 'Shadows Into Light', cursive;
+  font-size: 1.4em;
+  font-weight: normal;
+  line-height: 1.5em;
+  margin: 0;
+  text-shadow: 0 1px 0 rgba(255,255,255,.3);
+}

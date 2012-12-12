@@ -1,3 +1,5 @@
+define(['codemirror'], function(CodeMirror) {
+
 CodeMirror.defineMode("htmlmixed", function(config) {
   var htmlMode = CodeMirror.getMode(config, {name: "xml", htmlMode: true});
   var jsMode = CodeMirror.getMode(config, "javascript");
@@ -82,3 +84,5 @@ CodeMirror.defineMode("htmlmixed", function(config) {
 }, "xml", "javascript", "css");
 
 CodeMirror.defineMIME("text/html", "htmlmixed");
+
+});
