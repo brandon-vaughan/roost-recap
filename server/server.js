@@ -46,6 +46,12 @@ module.exports = function() {
     
     });
 
+    socket.on('editor:ishost', function(data) {
+      console.log('welcoming host...');
+      editor.welcomeHost(socket, data);
+    
+    });
+
     /*==========  Prez Events  ==========*/
     var prezEvents = require( './prez-events.js' );
     var prez = new prezEvents();
