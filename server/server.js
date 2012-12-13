@@ -64,6 +64,10 @@ module.exports = function() {
       prez.updateFrame(socket, data);
     });
 
+    socket.on('prez:getcurrent', function() {
+      prez.goToCurrent(socket);
+    });
+
   });
 
   /*==========  Create App Routes  ==========*/

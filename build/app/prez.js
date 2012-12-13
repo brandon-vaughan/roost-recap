@@ -79,34 +79,49 @@ define(['jquery', 'socket'], function( $, socket ) {
     var socketInstance = socket;
 
     $(document).keyup(function(e){
-
       // Move Slide
-      if ( Auth.isHost() && e.altKey && e.ctrlKey && ( e.keyCode === 39 || e.keyCode === 37 ) ) {
+      if ( Auth.isHost() && !e.shiftKey && e.altKey && ( e.keyCode === 3 || e.keyCode === 34 ) ) {
 
-        var direction = e.keyCode === 39 ? 'next' : 'prev';
+        var direction = e.keyCode === 34 ? 'next' : 'prev';
         instance.move(direction);
-        socketInstance.emit('prez:changeslide', { direction: direction } );
-
+        socketInstance.emit('prez:changeslide', { direction: direction, onDisplay: instance.onDisplay } );
+        return false;
       }
 
       // Move Props
-      if ( Auth.isHost() && e.altKey && e.ctrlKey && ( e.keyCode === 38 || e.keyCode === 40 ) ) {
+      if ( Auth.isHost() && e.shiftKey && e.altKey && ( e.keyCode === 33 || e.keyCode === 34 ) ) {
 
-        var direction = e.keyCode === 40 ? 'next' : 'prev';
+        var direction = e.keyCode === 34 ? 'next' : 'prev';
         instance.moveFrames(direction);
-        socketInstance.emit('prez:changeframe', { direction: direction } );
+        socketInstance.emit('prez:changeframe', { direction: direction, onStage: instance.onStage } );
+        return false;
+      }
 
+    });
+
+    socket.emit('prez:getcurrent');
+
+    socket.on('prez:gotocurrent', function(data) {
+
+      if ( data.onDisplay !== instance.onDisplay ) {
+
+        instance.onDisplay = data.onDisplay;  
+        instance.move();
+      
+      }
+      
+      if ( data.onStage !== instance.onStage ) {
+        instance.onStage = data.onStage;
+        instance.moveFrames();
       }
 
     });
 
     socket.on('prez:updateslide', function(data) {
-      console.log('updatingslide...');
       instance.move(data.direction);
     });
 
     socket.on('prez:updateframe', function(data) {
-      console.log('updatingframe...');
       instance.moveFrames(data.direction);
     });
 
@@ -116,37 +131,44 @@ define(['jquery', 'socket'], function( $, socket ) {
 
     this.curClass = this.slidesIndex[this.onDisplay];
 
-    this.index = direction === 'next' ? (this.onDisplay + 1) : (this.onDisplay - 1);
+    if ( !direction ) {
+      this.index = this.onDisplay;
+    } else {
+      this.index = direction === 'next' ? (this.onDisplay + 1) : (this.onDisplay - 1);
+    }
 
     this.onDisplay = ( this.index + this.slidesIndex.length ) % this.slidesIndex.length;
 
     this.moveClass = this.slidesIndex[this.onDisplay];
 
-    this.pastClass = this.slidesIndex[( ( this.onDisplay - 1 ) + this.slidesIndex.length ) % this.slidesIndex.length];
-    this.comingClass = this.slidesIndex[( ( this.onDisplay + 1 ) + this.slidesIndex.length ) % this.slidesIndex.length];
+    if ( this.moveClass !== this.curClass ) {
+      this.pastClass = this.slidesIndex[( ( this.onDisplay - 1 ) + this.slidesIndex.length ) % this.slidesIndex.length];
+      this.comingClass = this.slidesIndex[( ( this.onDisplay + 1 ) + this.slidesIndex.length ) % this.slidesIndex.length];
 
-    // Assign Classes
-    this.deck.removeClass(this.curClass).addClass(this.moveClass);
+      // Assign Classes
+      this.deck.removeClass(this.curClass).addClass(this.moveClass);
 
-    // Reset on display
-    this.slides.removeClass('on-display').removeClass('just-past').removeClass('coming-up');
+      // Reset on display
+      this.slides.removeClass('on-display').removeClass('just-past').removeClass('coming-up');
 
-    // Select elements
-    this.$onDisplay = $('#'+this.moveClass);
-    this.$past = $('#'+this.pastClass);
-    this.$coming = $('#'+this.comingClass);
+      // Select elements
+      this.$onDisplay = $('#'+this.moveClass);
+      this.$past = $('#'+this.pastClass);
+      this.$coming = $('#'+this.comingClass);
 
-    this.$onDisplay.addClass('on-display');
-    this.$past.toggleClass('just-past');
-    this.$coming.toggleClass('coming-up');
+      this.$onDisplay.addClass('on-display');
+      this.$past.toggleClass('just-past');
+      this.$coming.toggleClass('coming-up');
 
-    // Animate move if no transition
-    if ( !isTransition ) {
-      this.animate( this.effect );
+      // Animate move if no transition
+      if ( !isTransition ) {
+        this.animate( this.effect );
+      }
+
+      // Reset Stage for props
+      this.onStage = 0;
+
     }
-
-    // Reset Stage for props
-    this.onStage = 0;
 
   };
 
@@ -154,7 +176,11 @@ define(['jquery', 'socket'], function( $, socket ) {
 
     this.curpropClass = this.propsIndex[this.onStage];
 
-    this.propIndex = direction === 'next' ? (this.onStage + 1) : (this.onStage - 1);
+    if ( !direction ) {
+      this.propIndex = this.onStage;
+    } else {
+      this.propIndex = direction === 'next' ? (this.onStage + 1) : (this.onStage - 1);
+    }
 
     this.onStage = ( this.propIndex + this.propsIndex.length ) % this.propsIndex.length;
 
