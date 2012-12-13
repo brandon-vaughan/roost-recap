@@ -1,3 +1,8 @@
+roost-recap
+===========
+
+A brain dump of me lerninz at Roost : Boston
+
 # Understanding the Building Process
 
 **Present highlights from Roost:Boston**
@@ -33,5 +38,3 @@ _Present a small web app from start to finish leaveraging the lessons learned fr
 - Live update slides
 - Live code editor
 - Live editor batton
-
-
