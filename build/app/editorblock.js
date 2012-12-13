@@ -60,7 +60,8 @@ define([
       tabMode: 'indent',
       theme: 'prism',
       lineNumbers: true,
-      lineHighlight: true
+      lineHighlight: true,
+      readOnly: true
     }
   };
 
@@ -119,15 +120,23 @@ define([
     // Listen for editor updates 
     socket.on("editor:update", function(data) {
 
-      if ( data.id === instance.id && Auth.key !== 'supersecret' ) {
+      if ( data.id === instance.id ) {
 
-        if ( data.value !== instance.editor.getValue() ) {
+        if ( !Auth.isHost() && data.value !== instance.editor.getValue() ) {
           instance.updateEditor(data.value);
         }
 
         if ( instance.options.livePreview )
           instance.updatePreview(data.value);
       }
+
+    });
+
+    // Listen for editor updates 
+    socket.on("editor:welcomehost", function(data) {
+      console.log('howdy host!');
+      instance.options.editor.readOnly = false;
+      instance.grantAccess();
 
     });
 
@@ -148,6 +157,17 @@ define([
 
   };
 
+  EditorBlock.prototype.grantAccess = function( data ) {
+
+    // Instantiate CodeMirror
+    this.editor = CM.fromTextArea( this.elem[0], this.options.editor );
+
+    if ( this.options.livePreview ) {
+      // load updatePreview for initial view;
+      this.updatePreview();
+    }
+
+  };
 
   /**
    * updateEditor: Update the editor with new value

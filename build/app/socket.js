@@ -1,4 +1,4 @@
 define([ 'socketio' ], function( io ) {
-  var s = io.connect('http://liveprez:8000');
+  var s = io.connect('http://nclud.roost-recap.jit.su');
   return s || { on: function() {} };
 });

@@ -45,8 +45,8 @@ define(['jquery', 'socket'], function( $, socket ) {
     this.movement = isTransition ? 'transition' : 'animate';
 
     // Build simple deck and frame array for class injection
-    this.slidesIndex = ['one','two','three','four', 'five'];
-    this.propsIndex = ['','one','two','three','four'];
+    this.slidesIndex = ['one'];
+    this.propsIndex = ['','one','two'];
 
     this.setup();
 
@@ -81,7 +81,7 @@ define(['jquery', 'socket'], function( $, socket ) {
     $(document).keyup(function(e){
 
       // Move Slide
-      if ( e.altKey && ( e.keyCode === 39 || e.keyCode === 37 ) ) {
+      if ( Auth.isHost() && e.altKey && e.ctrlKey && ( e.keyCode === 39 || e.keyCode === 37 ) ) {
 
         var direction = e.keyCode === 39 ? 'next' : 'prev';
         instance.move(direction);
@@ -90,7 +90,7 @@ define(['jquery', 'socket'], function( $, socket ) {
       }
 
       // Move Props
-      if ( e.altKey && ( e.keyCode === 38 || e.keyCode === 40 ) ) {
+      if ( Auth.isHost() && e.altKey && e.ctrlKey && ( e.keyCode === 38 || e.keyCode === 40 ) ) {
 
         var direction = e.keyCode === 40 ? 'next' : 'prev';
         instance.moveFrames(direction);
