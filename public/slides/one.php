@@ -10,7 +10,7 @@
 
   <div class="scene">
     
-    <div class="frame preview" data-frame="one">
+    <div class="frame preview verticle" data-frame="one">
 
       <textarea class="code" id="code-html" name="html">
 <!doctype html>
