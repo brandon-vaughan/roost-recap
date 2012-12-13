@@ -134,10 +134,7 @@ define([
 
     // Listen for editor updates 
     socket.on("editor:welcomehost", function(data) {
-      console.log('howdy host!');
-      instance.options.editor.readOnly = false;
       instance.grantAccess();
-
     });
 
   };
@@ -152,7 +149,6 @@ define([
       id: this.id,
       value: this.editor.getValue()
     };
-
     socket.emit('editor:change', changeData);
 
   };
@@ -160,7 +156,7 @@ define([
   EditorBlock.prototype.grantAccess = function( data ) {
 
     // Instantiate CodeMirror
-    this.editor = CM.fromTextArea( this.elem[0], this.options.editor );
+    this.editor.setOption('readOnly', false);
 
     if ( this.options.livePreview ) {
       // load updatePreview for initial view;
@@ -174,7 +170,6 @@ define([
    * @param  { string } newValue [ full string replace for editor ]
    */
   EditorBlock.prototype.updateEditor = function( newValue ) {
-
     this.editor.setValue( newValue );
 
   }

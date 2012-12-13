@@ -41,13 +41,13 @@ module.exports = function() {
     var editor = new editorEvents();
 
     socket.on('editor:change', function(data) {
-      console.log('received editorchange...');
+
       editor.update(io, data);
     
     });
 
     socket.on('editor:ishost', function(data) {
-      console.log('welcoming host...');
+
       editor.welcomeHost(socket, data);
     
     });
@@ -57,12 +57,10 @@ module.exports = function() {
     var prez = new prezEvents();
 
     socket.on('prez:changeslide', function(data) {
-      console.log('received changeslide...');
       prez.updateSlide(socket, data);
     });
 
     socket.on('prez:changeframe', function(data) {
-      console.log('received changeframe...');
       prez.updateFrame(socket, data);
     });
 
@@ -71,9 +69,6 @@ module.exports = function() {
   /*==========  Create App Routes  ==========*/
 
   // Unit Testing
-  app.use( '/', express.static( config.baseDir + 'public') );
-  app.use( '/vendors', express.static( config.baseDir + 'build/vendors') );
-  app.use( '/app', express.static( config.baseDir + 'build/app') );
   app.use( '/_test', express.static( config.baseDir + 'test') );
   app.use( '/_build', express.static( config.baseDir + 'build') );
   app.use( '/_vendors', express.static( config.baseDir + 'build/vendors') );
