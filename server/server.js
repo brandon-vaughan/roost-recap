@@ -65,6 +65,9 @@ module.exports = function() {
   /*==========  Create App Routes  ==========*/
 
   // Unit Testing
+  app.use( '/', express.static( config.baseDir + 'public') );
+  app.use( '/vendors', express.static( config.baseDir + 'build/vendors') );
+  app.use( '/app', express.static( config.baseDir + 'build/app') );
   app.use( '/_test', express.static( config.baseDir + 'test') );
   app.use( '/_build', express.static( config.baseDir + 'build') );
   app.use( '/_vendors', express.static( config.baseDir + 'build/vendors') );
