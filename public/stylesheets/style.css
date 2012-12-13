@@ -1253,7 +1253,7 @@ textarea.code {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/vendors\/_codemirror-theme\.scss}line{font-family:\0000378}}
-.preview.verticle .cm-s-prism.CodeMirror {
+.preview.vertical .cm-s-prism.CodeMirror {
   width: 50%;
   border-right: solid 1px rgba(0, 0, 0, 0.05);
   box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.1);
@@ -1276,7 +1276,7 @@ textarea.code {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/vendors\/_codemirror-theme\.scss}line{font-family:\0000394}}
-.preview.verticle iframe {
+.preview.vertical iframe {
   width: 50%;
   right: 0;
   top: 0;
@@ -1316,8 +1316,8 @@ textarea.code {
  */
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_deck\.scss}line{font-family:\000031}}
 #deck {
-  background-color: #f5f2f0;
-  /*background-image: url(../images/shadow.png);*/
+  background-color: #074259;
+  background-image: url(../images/bg.png);
   background-repeat: no-repeat;
   background-position: center center;
   height: 100%;
@@ -1386,24 +1386,51 @@ textarea.code {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_copy\.scss}line{font-family:\000031}}
+.copy {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  /* Firefox */
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  /* Safari and Chrome */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  /* W3C */
+  display: box;
+  box-orient: horizontal;
+  box-pack: center;
+  box-align: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_copy\.scss}line{font-family:\0000325}}
 h1 {
   color: rgba(0, 0, 0, 0.5);
-  font-family: 'Amatic SC', cursive;
+  color: white;
+  font-family: 'Serifa W01 55 Roman', 'Serifa Std', 'Serifa', 'Museo Slab', 'Rockwell', georgia, serif;
   font-size: 3.5em;
-  font-weight: 700;
+  font-weight: normal;
   line-height: 1.5em;
-  margin: 0;
+  margin: 0 auto;
+  text-align: center;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  width: 70%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_copy\.scss}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_copy\.scss}line{font-family:\0000338}}
 h1 span {
+  color: #B3D88C;
+  font-weight: normal;
   display: block;
   font-size: .5em;
   letter-spacing: 2px;
   line-height: .5em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_copy\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_copy\.scss}line{font-family:\0000349}}
 p {
   color: rgba(0, 0, 0, 0.5);
   font-family: 'Eagle-Light', 'Shadows Into Light', cursive;
@@ -1425,44 +1452,50 @@ p {
   -moz-transition-delay: 1s;
   -o-transition-delay: 1s;
   transition-delay: 1s;
+  z-index: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000315}}
 .scene.one [data-frame=one] {
   opacity: 1;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
+  z-index: 5000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000315}}
 .scene.two [data-frame=two] {
   opacity: 1;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
+  z-index: 5000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000315}}
 .scene.three [data-frame=three] {
   opacity: 1;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
+  z-index: 5000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000315}}
 .scene.four [data-frame=four] {
   opacity: 1;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
+  z-index: 5000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/liveprez\/build\/sass\/components\/_scene\.scss}line{font-family:\0000315}}
 .scene.five [data-frame=five] {
   opacity: 1;
   -webkit-transition-delay: 0s;
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
   transition-delay: 0s;
+  z-index: 5000;
 }

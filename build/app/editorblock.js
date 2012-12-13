@@ -105,9 +105,15 @@ define([
     // Catch instance for use in scope
     var instance = this;
 
+    var delay; 
+
     // When editor is changed send event to server
     this.editor.on("change", function() {
-      instance.onChange();
+      clearTimeout(delay);
+      delay = setTimeout(function() {
+        instance.onChange();
+      }, 300);
+      
     });
 
     // Listen for editor updates 

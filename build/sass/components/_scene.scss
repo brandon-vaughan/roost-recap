@@ -5,6 +5,7 @@
     opacity: 0;
     @include transition(opacity .5s);
     @include transition-delay(1s);
+    z-index: 1;
   }
 
   $frames: one, two, three, four, five;
@@ -15,6 +16,7 @@
 
       opacity: 1;
       @include transition-delay(0s);
+      z-index: 5000;
     }
 
   }

@@ -1,13 +1,43 @@
+.copy {
+
+  position: relative;
+  height: 100%;
+  width: 100%;
+  /* Firefox */
+display:-moz-box;
+-moz-box-orient:horizontal;
+-moz-box-pack:center;
+-moz-box-align:center;
+
+/* Safari and Chrome */
+display:-webkit-box;
+-webkit-box-orient:horizontal;
+-webkit-box-pack:center;
+-webkit-box-align:center;
+
+/* W3C */
+display:box;
+box-orient:horizontal;
+box-pack:center;
+box-align:center;
+
+}
 h1 {
+
   color: rgba(0,0,0,.5);
-  font-family: 'Amatic SC', cursive;
+  color: white;
+  font-family: 'Serifa W01 55 Roman', 'Serifa Std', 'Serifa', 'Museo Slab', 'Rockwell', georgia, serif;
   font-size: 3.5em;
-  font-weight: 700;
+  font-weight: normal;
   line-height: 1.5em;
-  margin: 0;
+  margin: 0 auto;
+  text-align: center;
   text-shadow: 0 1px 0 rgba(255,255,255,.3);
+  width: 70%;
 
   span {
+    color: #B3D88C;
+    font-weight: normal;
     display: block;
     font-size: .5em;
     letter-spacing: 2px;
