@@ -10,11 +10,15 @@
 </head>
 <body>
 
-  <h1>Welcome to Oz <em>To look behind the curtain, please enter key</em></h1>
-  
-  <form id="login">
-    <input type="password" name="key" placeholder="the magic word" />
-  </form>
+  <div id="deck">
+    <article class="slide on-display">
+    <h1>Welcome to Oz <span>To look behind the curtain, please enter key</span></h1>
+    
+    <form id="login">
+      <input type="password" name="key" placeholder="the magic word" />
+    </form>
+  </article>
+  </div>
 
   <script src="/vendors/prism.js"></script>
   <script src="/vendors/require.js" data-main="/app/config.js"></script>

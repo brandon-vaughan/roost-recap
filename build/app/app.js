@@ -2,9 +2,9 @@ require([
   
   'jquery',
   'prez',
-  'editorblock'
-
-], function( $, Prez, EditorBlock ) {
+  'editorblock',
+  'auth',
+], function( $, Prez, EditorBlock, Auth ) {
 
   /*==========================================
   =            Prezentation Class            =
@@ -28,7 +28,8 @@ require([
   
   /*-----  End of Editor Blocks  ------*/
   
-  
+  var Auth = new Auth();
+  window.Auth = Auth;
   
   
 });

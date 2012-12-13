@@ -119,7 +119,7 @@ define([
     // Listen for editor updates 
     socket.on("editor:update", function(data) {
 
-      if ( data.id === instance.id ) {
+      if ( data.id === instance.id && Auth.key !== 'supersecret' ) {
 
         if ( data.value !== instance.editor.getValue() ) {
           instance.updateEditor(data.value);
