@@ -57,6 +57,10 @@
           text-transform: none;
         }
 
+        &.in-use {
+          color: crimson;
+        }
+
         &.active {
           color: #b3d88c;
         }

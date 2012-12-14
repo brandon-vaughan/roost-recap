@@ -28,9 +28,7 @@ module.exports = (function() {
    * @return {[type]}        [description]
    */
   EditorEvents.prototype.askHost = function( io, socket, request ) {
-
     request.guest = socket.id;
-
     return io.sockets.socket(EditorMembers.host).emit( 'editor:requestaccess', request );
 
   };
@@ -38,6 +36,7 @@ module.exports = (function() {
   EditorEvents.prototype.welcomeGuest = function( io, request ) {
     // set editor guest
     EditorMembers.guest = request.guest;
+    io.sockets.emit( 'editor:editmodeinuse', request );
     return io.sockets.socket(request.guest).emit( 'editor:welcomeguest', request );
   };
 
@@ -47,6 +46,14 @@ module.exports = (function() {
     return io.sockets.socket(request.guest).emit( 'editor:declineguest', request );
   };
 
+  EditorEvents.prototype.endGuest = function( io, request ) {
+    // end editor guest
+    var guest = EditorMembers.guest;
+    EditorMembers.guest = false;
+    io.sockets.emit( 'editor:editmodenotinuse', request );
+    return io.sockets.socket(guest).emit( 'editor:disableeditmode', request );
+  };
+
 
   /**
    * update - update editors for all attendees
@@ -54,7 +61,9 @@ module.exports = (function() {
    * @param  {obj} data editor.id and editor.value
    * @return {event}      send event
    */
-  EditorEvents.prototype.update = function( io, data ) {
+  EditorEvents.prototype.update = function( io, socket, data ) {
+    data.host = socket.id === EditorMembers.host ? EditorMembers.host : false;
+    data.guest = socket.id === EditorMembers.guest ? EditorMembers.guest : false;
     return io.sockets.emit( 'editor:update', data );
   };
 

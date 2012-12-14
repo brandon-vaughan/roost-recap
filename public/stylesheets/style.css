@@ -1563,10 +1563,14 @@ p {
   text-transform: none;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000360}}
+.scene header nav a.in-use {
+  color: crimson;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000364}}
 .scene header nav a.active {
   color: #b3d88c;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000366}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000370}}
 .scene header nav .message {
   color: #19637d;
   font-family: "Open Sans", "AvenirNextLTW01-Regular", "AvenirNextLTW01-UltraLi", "Open Sans";
@@ -1577,7 +1581,7 @@ p {
   height: 20px;
   line-height: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000384}}
 .scene .frame {
   opacity: 0;
   -webkit-transition: opacity 0.5s;
@@ -1590,7 +1594,7 @@ p {
   transition-delay: 1s;
   z-index: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000395}}
 .scene.one [data-frame=one] {
   opacity: 1;
   -webkit-transition-delay: 0s;
@@ -1599,7 +1603,7 @@ p {
   transition-delay: 0s;
   z-index: 5000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000395}}
 .scene.two [data-frame=two] {
   opacity: 1;
   -webkit-transition-delay: 0s;
@@ -1608,7 +1612,7 @@ p {
   transition-delay: 0s;
   z-index: 5000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000395}}
 .scene.three [data-frame=three] {
   opacity: 1;
   -webkit-transition-delay: 0s;
@@ -1617,7 +1621,7 @@ p {
   transition-delay: 0s;
   z-index: 5000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000395}}
 .scene.four [data-frame=four] {
   opacity: 1;
   -webkit-transition-delay: 0s;
@@ -1626,7 +1630,7 @@ p {
   transition-delay: 0s;
   z-index: 5000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_scene\.scss}line{font-family:\0000395}}
 .scene.five [data-frame=five] {
   opacity: 1;
   -webkit-transition-delay: 0s;

@@ -42,7 +42,7 @@ module.exports = function() {
 
     // on change update editor
     socket.on('editor:change', function(data) {
-      editor.update(io, data);
+      editor.update(io, socket, data);
     });
 
     // on ishost authenticate host
@@ -63,6 +63,11 @@ module.exports = function() {
     // on guestdeclined decline guest
     socket.on('editor:guestdeclined', function(request) {
       editor.declineGuest(io, request);
+    });
+
+    // endguestaccess end guest
+    socket.on('editor:endguestaccess', function(request){
+      editor.endGuest(io, request);
     });
     
 

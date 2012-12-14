@@ -125,8 +125,13 @@ define([
 
       if ( data.id === instance.id ) {
 
-        if ( !Auth.isHost() && data.value !== instance.editor.getValue() ) {
-          instance.updateEditor(data.value);
+        if ( data.value !== instance.editor.getValue() ) {
+
+          // don't update editor of the one typing
+          if ( ( data.guest && !Auth.isHost() ) || ( data.host && Auth.isHost() ) ) return false;
+
+          instance.updateEditor(data.value);  
+
         }
 
         if ( instance.options.livePreview )
@@ -137,12 +142,22 @@ define([
 
     // Listen for welcoming host
     socket.on("editor:welcomehost", function(data) {
-      instance.grantAccess();
+      instance.grantHostAccess();
     });
 
     // Listen for Edit Mode
     this.toolbar.find('a.edit').on('click', function() {
-      instance.requestEditMode();
+      if ( !$(this).hasClass('in-use') ) {
+        instance.requestEditMode();
+      }
+      return false;
+    });
+
+    // Listen for Edit Mode
+    this.toolbar.delegate('a.end-guest-access', 'click', function() {
+      if ( $(this).hasClass('active') ) {
+        instance.endGuestAccess();
+      }
       return false;
     });
 
@@ -154,7 +169,7 @@ define([
     // Listen for welcoming guest
     socket.on('editor:welcomeguest', function(request) {
       if ( instance.id === request.editorid ) {
-        instance.grantAccess();
+        instance.grantGuestAccess();
       }
     });
 
@@ -164,6 +179,32 @@ define([
         instance.declineGuestAccess();
       }
     });
+
+    // Listen for disable guest edit mode
+    socket.on('editor:disableeditmode', function( request ) {
+      if ( instance.id === request.editorid ) {
+        instance.disableEditMode();
+      }
+    });
+
+    
+    // Listen for edit mode not in use
+    socket.on('editor:editmodeinuse', function( request ) {
+      if ( instance.id === request.editorid ) {
+        instance.activateEditMode();
+      }
+    });
+
+    // Listen for edit mode not in use
+    socket.on('editor:editmodenotinuse', function( request ) {
+      if ( instance.id === request.editorid ) {
+        instance.deactivateEditMode();
+      }
+    });
+
+
+
+
   };
 
 
@@ -173,11 +214,17 @@ define([
    */
   EditorBlock.prototype.requestEditMode = function() {
     var request = { editorid: this.id }
+    console.log('sending request');
     this.toolbar.find('.message').text('requesting editor...').addClass('pulse');
     socket.emit('editor:guestrequest', request);
 
   };
 
+  /**
+   * hostConfirmAccess: receiving guest request alerts host and send response
+   * @param  {obj} request obj with guest id and editor id
+   * @return {event}  host response
+   */
   EditorBlock.prototype.hostConfirmAccess = function( request ) {
 
     if ( request.editorid === this.id ) {
@@ -204,20 +251,56 @@ define([
 
   };
 
-  EditorBlock.prototype.grantAccess = function( data ) {
-
-    // Instantiate CodeMirror
+  // Enable edit mode
+  EditorBlock.prototype.enableEditMode = function( data ) {
     this.editor.setOption('readOnly', false);
-
-    if ( this.options.livePreview ) {
-      // load updatePreview for initial view;
-      this.updatePreview();
-    }
-
   };
 
+  // disable editor mode
+  EditorBlock.prototype.disableEditMode = function() {
+    this.editor.setOption('readOnly', true);
+  };
+
+  // Enable activate edit mode for everyone
+  EditorBlock.prototype.activateEditMode = function() {
+    if ( Auth.isHost() ) {
+      this.toolbar.find('.end-guest-access').addClass('active');
+    } else {
+      this.toolbar.find('.edit').addClass('in-use');
+      this.toolbar.find('.message').text('editor is in use');
+    }
+  };
+
+  EditorBlock.prototype.deactivateEditMode = function() {
+    if ( Auth.isHost() ) {
+      this.toolbar.find('.end-guest-access').removeClass('active');
+    } else {
+      this.toolbar.find('.edit').removeClass('in-use active');
+      this.toolbar.find('.message').text('');
+    }
+  };  
+
+
+  EditorBlock.prototype.grantHostAccess = function( request ) {
+    this.toolbar.find('.edit').remove();
+    var hostcontrols = '<a class="end-guest-access" href="#"><span>D</span> End Guest Access</a>';
+    this.toolbar.find('.mode').append(hostcontrols);
+    this.enableEditMode();
+  }
+
+  EditorBlock.prototype.grantGuestAccess = function( request ) {
+    this.toolbar.find('.message').text('').removeClass('pulse');
+    this.toolbar.find('.edit').addClass('active');
+    this.enableEditMode();
+  }
+
   EditorBlock.prototype.declineGuestAccess = function( request ) {
-    this.toolbar.find('.message').text('declined; please try again in 5 min').removeClass('pulse');
+    this.toolbar.find('.message').text('declined...please try again soon').removeClass('pulse');
+  }
+
+  EditorBlock.prototype.endGuestAccess = function() {
+    var request = { editorid: this.id };
+    socket.emit('editor:endguestaccess', request);
   }
 
   /**
