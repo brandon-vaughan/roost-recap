@@ -1,22 +1,18 @@
 #deck {
   background-color: #074259;
-  background-image: $backgroundimage;
+  background-image: $backgroundimage-small;
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: cover;
   height: 100%;
   overflow: hidden;
   position: absolute;
   width: 100%;
   @include trans(background-color 1s);
 
-  &.two {
-    background: #222;
-  }
-  &.three {
-    background: #263942;
-  }
-  &.four {
-    background: #19252C;
+
+  @include respond-to(desktop) {
+    background-image: $backgroundimage;
   }
 
 }

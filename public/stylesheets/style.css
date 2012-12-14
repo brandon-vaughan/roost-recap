@@ -421,23 +421,23 @@ td {
 /* ------- Vars ------- */
 /* ----------- mixins ------------- */
 @-webkit-keyframes pulse {
-  /* line 62, ../../build/sass/global/_shared.scss */
+  /* line 63, ../../build/sass/global/_shared.scss */
   from {
     opacity: 0.75;
   }
 
-  /* line 65, ../../build/sass/global/_shared.scss */
+  /* line 66, ../../build/sass/global/_shared.scss */
   50% {
     opacity: 1.0;
   }
 
-  /* line 68, ../../build/sass/global/_shared.scss */
+  /* line 69, ../../build/sass/global/_shared.scss */
   to {
     opacity: 0.75;
   }
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/global\/_shared\.scss}line{font-family:\0000373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/global\/_shared\.scss}line{font-family:\0000374}}
 .pulse {
   -webkit-animation-name: pulse;
   -webkit-animation-duration: 1.5s;
@@ -445,7 +445,7 @@ td {
 }
 
 /* ------- UI Classes ------- */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/global\/_shared\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/global\/_shared\.scss}line{font-family:\0000381}}
 .icon {
   color: white;
   color: rgba(255, 255, 255, 0.4);
@@ -458,13 +458,13 @@ td {
   text-decoration: none;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/global\/_shared\.scss}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/global\/_shared\.scss}line{font-family:\0000393}}
 .icon:hover {
   color: white;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5), 2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/global\/_shared\.scss}line{font-family:\0000399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/global\/_shared\.scss}line{font-family:\00003100}}
 html, body {
   background: #222;
   font-size: 25px;
@@ -1350,9 +1350,10 @@ textarea.code {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_deck\.scss}line{font-family:\000031}}
 #deck {
   background-color: #074259;
-  background-image: url(../images/bg.png);
+  background-image: url(../images/bg-small.png);
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: cover;
   height: 100%;
   overflow: hidden;
   position: absolute;
@@ -1368,17 +1369,11 @@ textarea.code {
   -o-transition-delay: 0;
   transition-delay: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_deck\.scss}line{font-family:\0000312}}
-#deck.two {
-  background: #222;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_deck\.scss}line{font-family:\0000315}}
-#deck.three {
-  background: #263942;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_deck\.scss}line{font-family:\0000318}}
-#deck.four {
-  background: #19252C;
+@media only screen and (min-width: 569px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_deck\.scss}line{font-family:\000031}}
+  #deck {
+    background-image: url(../images/bg.png);
+  }
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_slide\.scss}line{font-family:\000031}}
