@@ -48,7 +48,8 @@ textarea.code { visibility: hidden }
   color: darken(slateGrey, 5%);
   text-shadow: 0 1px white;
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  line-height: 1.4em;
+  font-size: 18px;
+  line-height: 25px;
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -63,7 +64,7 @@ textarea.code { visibility: hidden }
       -ms-hyphens: none;
           hyphens: none;
 
-  top: 0;
+  top: 50px;
   left: 0;
   position: absolute;
   height: 100%;
@@ -90,7 +91,7 @@ textarea.code { visibility: hidden }
   height: 100%;
   width: 100%;
 }
-.preview.horizontal iframe { height: 50%; bottom: 0; left: 0;}
+.preview.horizontal iframe { height: 50%; bottom: -50px; left: 0;}
 .preview.vertical iframe { width: 50%; right: 0; top: 0;}
 
 .cm-s-prism .CodeMirror-gutters {

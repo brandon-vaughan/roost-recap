@@ -40,17 +40,31 @@ module.exports = function() {
     var editorEvents = require( './editor-events.js' );
     var editor = new editorEvents();
 
+    // on change update editor
     socket.on('editor:change', function(data) {
-
       editor.update(io, data);
-    
     });
 
+    // on ishost authenticate host
     socket.on('editor:ishost', function(data) {
-
       editor.welcomeHost(socket, data);
-    
     });
+
+    // on requesteditor send request to host 
+    socket.on('editor:guestrequest', function(request) {
+      editor.askHost(io, socket, request);
+    });
+
+    // on guestapproved welcome guest
+    socket.on('editor:guestapproved', function(request) {
+      editor.welcomeGuest(io, request);
+    });
+
+    // on guestdeclined decline guest
+    socket.on('editor:guestdeclined', function(request) {
+      editor.declineGuest(io, request);
+    });
+    
 
     /*==========  Prez Events  ==========*/
     var prezEvents = require( './prez-events.js' );

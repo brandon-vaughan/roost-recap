@@ -79,19 +79,20 @@ define(['jquery', 'socket'], function( $, socket ) {
     var socketInstance = socket;
 
     $(document).keyup(function(e){
-      // Move Slide
-      if ( Auth.isHost() && !e.shiftKey && e.altKey && ( e.keyCode === 3 || e.keyCode === 34 ) ) {
+      
+      // Move Slide ctrl + < || >
+      if ( Auth.isHost() && !e.shiftKey && e.altKey && ( e.keyCode === 188 || e.keyCode === 190 ) ) {
 
-        var direction = e.keyCode === 34 ? 'next' : 'prev';
+        var direction = e.keyCode === 190 ? 'next' : 'prev';
         instance.move(direction);
         socketInstance.emit('prez:changeslide', { direction: direction, onDisplay: instance.onDisplay } );
         return false;
       }
 
-      // Move Props
-      if ( Auth.isHost() && e.shiftKey && e.altKey && ( e.keyCode === 33 || e.keyCode === 34 ) ) {
+      // Move Props shift + ctrl + < || >
+      if ( Auth.isHost() && e.shiftKey && e.ctrlKey && ( e.keyCode === 188 || e.keyCode === 190 ) ) {
 
-        var direction = e.keyCode === 34 ? 'next' : 'prev';
+        var direction = e.keyCode === 190 ? 'next' : 'prev';
         instance.moveFrames(direction);
         socketInstance.emit('prez:changeframe', { direction: direction, onStage: instance.onStage } );
         return false;

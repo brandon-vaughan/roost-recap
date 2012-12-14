@@ -1,7 +1,83 @@
 .scene {
 
-  .frame {
+  header {
+    background: #042734;
+    border-bottom: solid 1px darken(#042734, 5%);
+    height: 50px;
+    position: absolute;
+    overflow: auto;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 
+    h1 {
+      color: #b3d88c;
+      float: left;
+      font-family: $paragraph;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 50px;
+      margin: 0;
+      padding: 0 20px;
+      width: auto;
+    }
+
+    nav {
+      float: right;
+
+      li {
+        padding: 0;
+        float: right;
+        list-style: none;
+      }
+      
+      a {
+        border-left: solid 1px rgba(255,255,255,.05);
+        padding: 15px;
+        height: 20px;
+        line-height: 20px;
+        color: #155268;
+        display: block;
+        font-family: $paragraph;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        @include transition( background .7s );
+
+        &:hover {
+          background: rgba(0,0,0,.1);
+          text-shadow: 0 0 3px rgba(0,0,0,.6);
+        }
+
+        span {
+          font-family: 'Pictos';
+          font-size: 20px;
+          padding: 0 5px;
+          text-transform: none;
+        }
+
+        &.active {
+          color: #b3d88c;
+        }
+      }
+
+      /* toolbar message */
+      .message {
+        color: lighten(#155268, 5%);
+        font-family: $paragraph;
+        font-size: 13px;
+        font-weight: bold;
+        font-style: italic;
+        padding: 15px;
+        height: 20px;
+        line-height: 20px;
+      }
+
+    }
+  }
+
+  .frame {
     opacity: 0;
     @include transition(opacity .5s);
     @include transition-delay(1s);

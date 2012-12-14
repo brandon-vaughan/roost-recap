@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>Roost Recap</title>
 
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> <!-- disable zooming -->
+
+  <link type="text/css" rel="stylesheet" href="http://fast.fonts.com/cssapi/f4662262-4683-4d8a-83e3-2f5e76fdaf74.css"/>
+
   <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 
   <script src="/vendors/modernizr.js"></script>
@@ -24,7 +28,22 @@
 
   <div class="scene">
     
-    <div class="frame preview vertical" data-frame="one">
+    <div class="frame preview horizontal" data-frame="one">
+      <header id="code-html-toolbar">
+        <h1>Part 1: HTML5 canvas demo</h1>
+        <nav>
+          <ul>
+          <!--<li class="chat"><a href="#">Chat</a></li>
+          <li class="view">
+            <a class="code" href="#">code</a>
+            <a class="split" href="#">split</a>
+            <a class="preview" href="#">preview</a>
+          </li>-->
+          <li class="mode"><a class="edit" href="#"><span>p</span> Edit Mode</a></li>
+          <li class="message"></li>
+        </ul>
+        </nav>
+      </header>
 
       <textarea class="code" id="code-html" name="html">
 <!doctype html>
@@ -55,6 +74,20 @@
     </div>
 
     <div class="frame" data-frame="two">
+
+      <header id="code-html-toolbar">
+        <h1>Part 1: HTML5 canvas demo</h1>
+        <nav>
+          <li class="chat"><a href="#">Chat</a></li>
+          <li class="view">
+            <a class="code" href="#">code</a>
+            <a class="split" href="#">split</a>
+            <a class="preview" href="#">preview</a>
+          </li>
+          <li class="mode"><a class="edit" href="#">Edit Mode</a></li>
+          <li class="message"></li>
+        </nav>
+      </header>
 
       <textarea class="code" id="code-javascript" name="javascript">
 Sliderr.prototype.assignments = function() {

@@ -74,6 +74,9 @@ define([
     // get id of instance
     this.id = this.elem.attr('id');
 
+    // get toolbar
+    this.toolbar = $('#' + this.id + '-toolbar');
+
     // Instantiate CodeMirror
     this.editor = CM.fromTextArea( this.elem[0], this.options.editor );
 
@@ -106,7 +109,7 @@ define([
     // Catch instance for use in scope
     var instance = this;
 
-    var delay; 
+    var delay;
 
     // When editor is changed send event to server
     this.editor.on("change", function() {
@@ -132,12 +135,60 @@ define([
 
     });
 
-    // Listen for editor updates 
+    // Listen for welcoming host
     socket.on("editor:welcomehost", function(data) {
       instance.grantAccess();
     });
 
+    // Listen for Edit Mode
+    this.toolbar.find('a.edit').on('click', function() {
+      instance.requestEditMode();
+      return false;
+    });
+
+    // Listen for request guest access
+    socket.on('editor:requestaccess', function(request) {
+      instance.hostConfirmAccess(request);
+    });
+
+    // Listen for welcoming guest
+    socket.on('editor:welcomeguest', function(request) {
+      if ( instance.id === request.editorid ) {
+        instance.grantAccess();
+      }
+    });
+
+    // Listen for declining guest
+    socket.on('editor:declineguest', function(request) {
+      if ( instance.id === request.editorid ) {
+        instance.declineGuestAccess();
+      }
+    });
   };
+
+
+  /**
+   * requestEditMode: send request to host to access edit mode
+   * @return {event} requesteditmode
+   */
+  EditorBlock.prototype.requestEditMode = function() {
+    var request = { editorid: this.id }
+    this.toolbar.find('.message').text('requesting editor...').addClass('pulse');
+    socket.emit('editor:guestrequest', request);
+
+  };
+
+  EditorBlock.prototype.hostConfirmAccess = function( request ) {
+
+    if ( request.editorid === this.id ) {
+      var access = confirm('Grant guest access?');
+      if ( access ) {
+        socket.emit('editor:guestapproved', request);
+      } else {
+        socket.emit('editor:guestdeclined', request);
+      }
+    }
+  }
 
 
   /**
@@ -164,6 +215,10 @@ define([
     }
 
   };
+
+  EditorBlock.prototype.declineGuestAccess = function( request ) {
+    this.toolbar.find('.message').text('declined; please try again in 5 min').removeClass('pulse');
+  }
 
   /**
    * updateEditor: Update the editor with new value
