@@ -1479,10 +1479,11 @@ h1 span {
   display: block;
   font-size: .5em;
   letter-spacing: 2px;
-  line-height: .5em;
+  line-height: 1.2em;
+  margin-top: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_copy\.scss}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/brandon\/Krypton\/roost-recap\/build\/sass\/components\/_copy\.scss}line{font-family:\0000350}}
 p {
   color: rgba(0, 0, 0, 0.5);
   font-family: 'AvenirNextLTW01-Regular', 'Avenir LT', Avenir, sans-serif;
